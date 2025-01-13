@@ -21,7 +21,8 @@ def terminalDecoder(cmd, currentDevice):
   
   Commands = {
     'exit': 0,
-    'devswap': 1,
+    'help': 1,
+    'devswap': 2
   }
 
   toExit = False
@@ -37,7 +38,11 @@ def terminalDecoder(cmd, currentDevice):
       print('Exiting terminal')
       toExit = True
 
-    case 1: #* DEVSWAP CMD -----------------------------------------------------------------------
+    case 1: #* HELP CMD    -----------------------------------------------------------------------
+      with open('helpdocs.txt', 'r') as file:
+        print (file.read())
+
+    case 2: #* DEVSWAP CMD -----------------------------------------------------------------------
       while True:
           print('\nSelect a device to swap to on the list')
 
@@ -68,7 +73,7 @@ def terminalDecoder(cmd, currentDevice):
             print(f'Input {choice} not recognized as "y" or "n". Please try again')
             continue
 
-    case _:
+    case _: #* DEFAULT CASE -----------------------------------------------------------------------
       print(f'Command number {Commands[command[0]]} not found in dictionary')
       print('Default case evaluated')
     

@@ -1,0 +1,15 @@
+
+*******************************************************************************************
+GENERAL COMMAND HELP DOC
+*******************************************************************************************
+[Commands are NOT case sensitive]
+
+Exit: Closes terminal and exits the program.
+
+Help: Prints help doc to terminal
+
+Devswap: Swaps the device connected. Follow prompts to select the device
+
+-------------------------------------------------------------------------------------------
+END OF FILE
+-------------------------------------------------------------------------------------------
