@@ -10,8 +10,45 @@ def terminal(device, exit = False):
   print('\nPlease enter a command')
   print('Type "help" for command help')
   cmdIn = input(f'@{device}$: ')
-  print(cmdIn)
-  terminal('Pi_5', True)
+  terminalDecoder(cmdIn, device)
+  
+# Decodes terminal input to a command to run
+def terminalDecoder(cmd, currentDevice):
+  
+
+  Commands = {
+    'exit': 0,
+    'devswap': 1
+  }
+
+  toExit = False
+
+  commandUpper = cmd.split()
+  command = [x.lower() for x in commandUpper]
+  
+  numOfCmds = command.Count()
+
+  match (Commands[command[0]]):
+    case 0: #* EXIT CMD    -----------------------------------------------------------------------
+      print('Exiting terminal')
+      toExit = True
+
+    case 1: #* DEVSWAP CMD -----------------------------------------------------------------------
+      while True:
+          print('Select a device to swap to on the list')
+
+          i = 0
+          for x in connectedDevices:
+            i += 1
+            if x != currentDevice:
+              print(f'{i} {x}')
+            else:
+              print(f'{i} {x} [SELECTED]')
+
+          deviceSelected = input('Enter device number')
+          
+
+  terminal()
 
 
 # Welcome message and terminal initalization
