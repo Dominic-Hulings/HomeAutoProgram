@@ -4,7 +4,7 @@ connectedDevices = ['Pi_pico', 'Pi_5'] # TODO: Make python file to update device
                                        # TODO: In order to add more devices that can be controlled from central device
 
 # Create a recursive function to continually until exit cmd is recieved
-def terminal(device, exit = False):
+def Terminal(device, exit = False):
   print(f'Current device: {device}')
   print(f'Current exit flag status: {exit}')
   if exit:
@@ -12,12 +12,12 @@ def terminal(device, exit = False):
   print('\nPlease enter a command')
   print('Type "help" for command help')
   cmdIn = input(f'@{device}$: ')
-  terminalDecoder(cmdIn, device)
+  TerminalDecoder(cmdIn, device)
   
 
 
 # Decodes terminal input to a command to run
-def terminalDecoder(cmd, currentDevice):
+def TerminalDecoder(cmd, currentDevice):
   
   Commands = {
     'exit': 0,
@@ -39,7 +39,7 @@ def terminalDecoder(cmd, currentDevice):
       toExit = True
 
     case 1: #* HELP CMD    -----------------------------------------------------------------------
-      with open('helpdocs.txt', 'r') as file:
+      with open('helpDocs.txt', 'r') as file:
         print (file.read())
 
     case 2: #* DEVSWAP CMD -----------------------------------------------------------------------
@@ -77,9 +77,9 @@ def terminalDecoder(cmd, currentDevice):
       print(f'Command number {Commands[command[0]]} not found in dictionary')
       print('Default case evaluated')
     
-  terminal(device, toExit)
+  Terminal(device, toExit)
 
 
 # Welcome message and terminal initalization
 print('Welcome, you have opened the Home Automation Main Terminal')
-terminal('Pi_5')
+Terminal('Pi_5')
